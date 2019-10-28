@@ -1,121 +1,156 @@
-/*
-var Typer={
-	text: null,
-	accessCountimer:null,
-	index:0, 
-	speed:2,
-	file:"", 
-	accessCount:0,
-	deniedCount:0, 
-	init: function(){
-		console.log("init");
+/*class Typer {
+	text = null;
+	accessCountimer = null;
+	index = 0;
+	speed = 3;
+	file = "";
+	header = "";
 
-		Typer.accessCountimer=setInterval(function(){Typer.updLstChr();},500); 
-		$.get(Typer.file,function(data){
-			Typer.text=data;
-			Typer.text = Typer.text.slice(0, Typer.text.length-1);
+	constructor(headerFile) {
+		self.accessCountimer = setInterval(function(){this.updLstChr();}, 500);
+		$.get(headerFile, function(data){
+			self.header = data;
+			self.header = self.header.slice(0,self.header.length-1);
 		});
-	},
- 
-	content:function(){
+		//self.addHeader();
+	}
+
+	content() {
 		return $("#console").html();
-	},
- 
-	write:function(str){
+	}
+
+	write(str) {
 		$("#console").append(str);
 		return false;
-	},
- 
-	addText:function(key){
-		
-		if(key.keyCode == 18){
-			Typer.accessCount++; 
-			
-			if(Typer.accessCount >= 3){
-				Typer.makeAccess(); 
-			}
-		}
-		
-    		else if(key.keyCode == 20){
-			Typer.deniedCount++; 
-			
-			if(Typer.deniedCount >= 3){
-				Typer.makeDenied(); 
-			}
-		}
-		
-    		else if(key.keyCode == 27){ 
-			Typer.hidepop(); 
-		}
-		
-    		else if(Typer.text){ 
-			var cont=Typer.content(); 
-			if(cont.substring(cont.length-1,cont.length) == "|") 
+	}
+
+	addText() {
+		if(self.text){
+
+			var cont = self.content() == "" ? " " : self.content();
+
+			if(cont.substring(cont.length-1,cont.length) == "|") {
 				$("#console").html($("#console").html().substring(0,cont.length-1)); 
-			if(key.keyCode != 8){ 
-				Typer.index+=Typer.speed;	
 			}
-      		else {
-			if(Typer.index > 0) 
-				Typer.index-=Typer.speed;
+			if(key.keyCode != 8){
+				self.index += self.speed;
 			}
-			var text=Typer.text.substring(0,Typer.index)
-			var rtn= new RegExp("\n", "g"); 
-	
-			$("#console").html(text.replace(rtn,"<br/>"));
-			window.scrollBy(0,50); 
 		}
-		
-		if ( key.preventDefault && key.keyCode != 122 ) { 
-			key.preventDefault()
-		};  
-		
-		if(key.keyCode != 122){ // otherway prevent keys default behavior
-			key.returnValue = false;
+		else {
+			if(self.index>0){
+				self.index -= self.speed
+			}
 		}
-	},
- 
-	updLstChr:function(){ 
-		var cont=this.content(); 
-		
-		if(cont.substring(cont.length-1,cont.length)=="|") 
-			$("#console").html($("#console").html().substring(0,cont.length-1)); 
-		
-		else
-			this.write("|"); // else write it
+		var text = self.text.substring(0,self.index);
+		var rtn = new RegExp("\n", "g");
+		$("#console").html(text.replace(rtn,"<br/>"));
+		window.scrollBy(0,50);
 	}
-}
- 
-function replaceUrls(text) {
-	var http = text.indexOf("http://");
-	var space = text.indexOf(".me ", http);
-	
-	if (space != -1) { 
-		var url = text.slice(http, space-1);
-		return text.replace(url, "<a href=\""  + url + "\">" + url + "</a>");
-	} 
-	
-	else {
-		return text
+
+
+	updLstChr() {
+		var cont = $("#console").html();
+		if(cont.substring(cont.length-1, cont.length) == "|"){
+			$("#console").html($("#console").html().substring(0,cont.length-1));
+		}
+		else {
+			this.write("|");
+		}
 	}
+
+	addHeader() {
+		var cont = this.content()//$("#console").html();
+		if(cont.substring(cont.length-1, cont.length) == "|"){
+			$("#console").html($("#console").html().substring(0,cont.length-1));
+		}
+
+		$("#console").html($("#console").html() + self.header);
+	}
+
 }
 
-Typer.speed=3;
-Typer.file="jonathanascencio.txt";
-Typer.init();
- 
-var timer = setInterval(t(), 30);
-function t() {
-	console.log("t()");
-	Typer.addText({"keyCode": 123748});
+function Typer(){
+	this.text = null;
+	this.accessCountimer = null;
+	this.index = 0;
+	this.speed = 2;
+	this.file = "";
+
+
+	this.init = function() {
+		let upd = this.updLstChr;
+		this.accessCountimer = setInterval(upd, 500);
+		$.get(this.file, function(data){
+			this.text=data;
+			this.text = this.text.slice(0,this.text.length-1);
+
+		});
+
+	}
 	
-	if (Typer.index > Typer.text.length) {
-		clearInterval(timer);
+	this.content = function(){
+		return $("#console").html();
+	}
+
+
+	this.write = function(str){
+		$("#console").append(str);
+		return false;
+	}
+
+	this.addText = function(key){
+		if(this.text){
+
+			var cont = this.content() == "" ? " " : this.content();
+
+			if(cont.substring(cont.length-1,cont.length) == "|") {
+				$("#console").html($("#console").html().substring(0,cont.length-1)); 
+			}
+			if(key.keyCode != 8){
+				this.index += this.speed;
+			}
+		}
+		else {
+			if(this.index>0){
+				this.index -= this.speed
+			}
+		}
+		var text = this.text.substring(0,this.index);
+		var rtn = new RegExp("\n", "g");
+		$("#console").html(text.replace(rtn,"<br/>"));
+		window.scrollBy(0,50);
+
+	}
+
+	this.updLstChr = function() {
+		var cont = this.content;
+		console.log("cont = " + cont);
+		if(cont == undefined){
+			this.write("|");
+		}
+		if(cont.substring(cont.length-1, cont.length) == "|"){
+			$("#console").html($("#console").html().substring(0,cont.length-1));
+		}
+		else {
+			this.write("|");
+		}
+	}
+
+	this.addHeader = function(header) {
+		this.header = header;
+		var cont = this.content();
+		if(cont.substring(cont.length-1, cont.length) == "|"){
+			$("#console").html($("#console").html().substring(0,cont.length-1));
+		}
+		cont = cont == null ? "" : this.content();
+		$("#console").html(cont + header)
 	}
 }
 */
+//TODO: figure out how to set 
 var Typer={
 	text: null,
+	textDisplayed: "",
 	accessCountimer: null,
 	index: 0,
 	speed: 2,
@@ -123,16 +158,14 @@ var Typer={
 	accessCount: 0,
 	deniedCount: 0,
 	init: function() {
-		console.log("init");
-		Typer.accessCountimer = setInterval(function(){Typer.updLstChr();}, 500);
-		console.log(Typer.file);
+		this.accessCountimer = setInterval(function(){Typer.updLstChr();}, 500);
+		/*
 		$.get(Typer.file, function(data){
 			Typer.text=data;
 			Typer.text = Typer.text.slice(0,Typer.text.length-1);
-			console.log("text = " + Typer.text + " index = " + Typer.index);
 
 		});
-		console.log("text = " + Typer.text + " index = " + Typer.index);
+*/
 
 	},
 	
@@ -145,63 +178,40 @@ var Typer={
 		return false;
 	},
 
-	addText: function(key){
-		//console.log("text = " + Typer.text + " index = " + Typer.index);
+	addText: function(){
+		var cont = "";
+		var oldIndex = self.index;
+		console.log("displayed = " + self.textDisplayed + " text = " + self.text);
+		if(self.text){
 
-		if(key.keyCode==18){
-			console.log("here0");
-			Typer.accessCount++;
-
-			if(Typer.accessCount >= 3){
-				Typer.makeAccess();
-			}
-		}
-		else if(key.keyCode==20){
-			console.log("here1");
-
-			Typer.deniedCount++;
-
-			if(Typer.deniedCount >= 3){
-				Typer.makeDenied();
-			}
-		}
-		else if(key.keyCode==27){
-			console.log("here2");
-
-			Typer.hidepop();
-		}
-		else if(Typer.text){
-			console.log("here3");
-
-			var cont = Typer.content() == "" ? " " : Typer.content();
-			console.log("cont = " + cont);
+			var cont = this.content() == "" ? " " : this.content();
 
 			if(cont.substring(cont.length-1,cont.length) == "|") {
 				$("#console").html($("#console").html().substring(0,cont.length-1)); 
 			}
-			if(key.keyCode != 8){
-				Typer.index += Typer.speed;
-			}
+
+			self.index += self.speed;
+		}
+		if(self.textDisplayed == undefined || self.textDisplayed != self.text){
+			console.log("here index = " + self.index);
+			var start = self.textDisplayed == undefined ? 0 : self.textDisplayed.length;
+			var text = self.text.substring(start, self.index);
+			var rtn = new RegExp("\n", "g");
+			$("#console").html($("#console").html() + text.replace(rtn,"<br/>"));
+			self.textDisplayed = self.textDisplayed == undefined ? text : self.textDisplayed + text;
+
 		}
 		else {
-			console.log("here4: " + Typer.index);
-			if(Typer.index>0){
-				Typer.index -= Typer.speed
+			if(self.index>0){
+				self.index -= self.speed;
 			}
 		}
-		var text = Typer.text.substring(0,Typer.index);
-		var rtn = new RegExp("\n", "g");
-		$("#console").html(text.replace(rtn,"<br/>"));
+
+
+		
+		console.log("ret = " + rtn);
 		window.scrollBy(0,50);
 
-		if(key.preventDefault && key.keyCode != 122){
-			key.preventDefault();
-		}
-		else if(key.keyCode != 122){
-			key.returnValue = false;
-		}
-			
-		
 	},
 
 	updLstChr: function() {
@@ -212,36 +222,45 @@ var Typer={
 		else {
 			this.write("|");
 		}
+	},
+
+	addHeader: function(header) {
+		this.header = header;
+		var cont = this.content();
+		if(cont.substring(cont.length-1, cont.length) == "|"){
+			$("#console").html($("#console").html().substring(0,cont.length-1));
+		}
+		cont = cont == null ? "" : this.content();
+		$("#console").html(cont + header)
 	}
 }
 
-function replaceUrls(text){
-	var http = text.indexOf("http://");
-	var space = text.indexOf(".me ", http);
 
-	if(space != -1){
-		var url = text.slice(http, space-1);
-		return text.replace(url, "<a href=\"" + url + "</a>");
-	}
-	else {
-		return text;
-	}
-}
+$.get("header.txt", function(data){
+	var header = data;
+	Typer.addHeader(header.slice(0, header.length-1));
+});
 
-Typer.speed = 3;
-Typer.file = "jonathanascencio.txt";
-Typer.init();
+$.get("welcome.txt", function(data){
+	var welc = data;
+	self.text = welc.slice(0, welc.length-1);
+	console.log("text 1 = " + self.text);
+	console.log("data = " + data);
+
+	Typer.init();
+});
 
 
-//setTimeout(function timer(){setInterval(t(), 30);}, 1000);
+//Typer.file = "header.txt";
+//Typer.init();
+
+
 var timer = setInterval(t, 30);
 
 function t() {
-	console.log("t()");
-	Typer.addText({"keyCode": 123748});
+	Typer.addText();
 
 	if(Typer.text && Typer.index > Typer.text.length){
-		console.log("clearInterval");
 		clearInterval(timer);
 	}
 }
@@ -259,7 +278,9 @@ document.addEventListener('keydown', function(event) {
 		}
 	}else if(event.keyCode == 8)
 	{
-		removeInput();
+		if(input.length > 0){
+			removeInput();
+		}
 	}
 });
 
@@ -275,15 +296,11 @@ function addKey(key) {
 }
 
 function removeInput(){
-	if(input.length > 0){
-		var cont = Typer.content();
-		if(cont.substring(cont.length-1, cont.length) == "|"){
-			$("#console").html($("#console").html().substring(0,cont.length-1));
-		}
-		var len = $("#console").html().length;
-		$("#console").html($("#console").html().substring(0,len-1));
-		input = input.substring(0, input.length-1);
+	var cont = Typer.content();
+	if(cont.substring(cont.length-1, cont.length) == "|"){
+		$("#console").html($("#console").html().substring(0,cont.length-1));
 	}
-	
-
+	var len = $("#console").html().length;
+	$("#console").html($("#console").html().substring(0,len-1));
+	input = input.substring(0, input.length-1);
 }
