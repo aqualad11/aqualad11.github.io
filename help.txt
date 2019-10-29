@@ -1,0 +1,1 @@
+<div><p>'ls'    list files</span></p><p>'cat' [file]    open file </span></p><p>'help'    list of commands</span></p><p>'clear'    clear screen</p></div>

@@ -1,0 +1,8 @@
+<h2>About Me</h2><p>Hello! I am Jonathan Ascencio.</p>
+<p>I am a recent graduate in Computer Science from <span id="school">California State University, Long Beach</span>. I love problem solving and creating new things. I also enjoy working on web development, specifically working with the backend, but have started to branch out to the frontend. (this is actually my first "frontend" project) </p>
+<p>I have strong passion for Software Development and do my best to grow as a developer everyday. Aside from Software Development, I aspire to go into the field of Artificial Intelligence and Machine Learning!
+<p>In my spare time I enjoy surfing, rock climbing, and playing video games!</p>
+<p>I am currently in the Job Market for a Software Engineering position, if you would like to see a preview of my resume run the following command:</p>
+<p><span id="command">cat resume.txt</span></p>
+<p>If you would like to contact me, run this command:</p>
+<p><span id="command">cat contactme.txt</span></p>

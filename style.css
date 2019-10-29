@@ -14,6 +14,8 @@ body {
 	text-align: left;
 }
 
+
+
 a {
 	color: #0bc;
 	text-decoration: none;
@@ -28,7 +30,7 @@ a {
 }
 
 #b {
-	columns: #ff0096;
+	color: #ff0096;
 }
 
 #k {
@@ -37,6 +39,18 @@ a {
 
 #op {
 	columns: #888888;
+}
+
+#school {
+	color: #cccc00;
+}
+
+#command {
+	color: #66ffff;
+}
+
+#turq {
+	color: #00cccc;
 }
 
 @keyframes change {

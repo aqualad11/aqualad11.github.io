@@ -1,0 +1,48 @@
+<div id="Resume">
+	<h1>Resume</h1>
+	<h2 id="turq">Skills</h1>
+	<h3>Programming Languages (Java * C++ * Python * C# * MySQL * JavaScript)</h2>
+	<h3>Frameworks (.NET * Entity * Vue.js)</h3>
+	<h3>Operating Systems (Windows * macOS * Linux)</h3>
+	<h2 id="turq">Work Experience</h2>
+	<h3>Extron Electronics</h3>
+	<h4 id="turq">Quality Assurance Engineer (May 2019 - Oct 2019)</h4>
+	<ul>
+		<li>Work in an agile environment and in constant collaboration with the engineering and product control teams to deliver projects on time.</li>
+		<li>In charge of writing and executing test cases for Toolbelt, one of the company’s software tools, which is used to manage their hardware products that include control processors, touchpanels, and network button panels.</li>
+		<li>Wrote a batch script, which uses the Jira REST api, to automate the creation of daily tasks to improve the team's productivity</li>
+		<li>Imported a testing tool from Python to C\#.</li>
+	</ul>
+	<h4 id="turq">Quality Assurance Engineer Intern (Jan. 2019 - May 2019)</h4>
+	<ul>
+		<li>Refactored and optimized an automation program, which interprets JSON test files and performs tests on iOS and Android devices</li>
+		<li>Additionally, wrote a portion of the JSON parser in JAVA and used technologies such as Selenium, Appium, and BrowserStack.</li>
+	</ul>
+	<h3>CSULB Research Foundation - Caltrans</h3>
+	<h4 id="turq">Research Technician (Jun. 2018 - Dec. 2018)</h4>
+	<ul>
+		<li>Programmer for a United States’ and California’s Department of Transportation (DOT and Caltrans)-funded research program at CSULB.</li>
+		<li>Performed data transformation to extract features from data collected.</li>
+		<li>Utilized machine learning algorithms from scikit-learn libraries in Python to classify different types of cars based on their electromagnetic signals.</li>
+	</ul>
+	<h2 id="turq">Projects</h2>
+	<h3>Senior Project</h3>
+	<h4 id="turq">Team Lead</h4>
+	<ul>
+		<li>Led a team of four members to develop a Single Page Application(SPA), hosted on AWS.</li>
+		<li>Carried out an agile methodology, specifically SCRUM, by overseeing team standups, sprint planning, and sprint retrospectives.</li>
+		<li>Implemented the SQL database, and deployed it on an RDS instance, using the Entity Framework.</li>
+		<li>Set up routes for our web api, written in C\# using .NET framework.</li>
+		<li>Connected api routes to our frontend, written in JavaScript using Vuetify framework.</li>
+		<li>Implemented the user management and session system using JSON Web Tokens.</li>
+		<li>Integrated with a Single-Sign-On(SSO) project that was developed by another group in the class.</li>
+	</ul>
+	<h3>Message-Queue</h3>
+	<h4 id="turq">Project Member</h4>
+	<ul>
+		<li>Implemented a message queue, consisting of three sender programs and two receivers programs, which would make system calls to communicate with each other.</li>
+		<li>Program was written in C++ for Linux.</li>
+	</ul>
+	<br>
+	<h3>If you'd like a more detailed PDF version of my resume click <a href="My_Resume.pdf" download>here</a></h3>
+</div>
