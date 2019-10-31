@@ -3,7 +3,7 @@ var Typer={
 	textDisplayed: "",
 	accessCountimer: null,
 	index: 0,
-	speed: 3,
+	speed: 8,
 	file: "",
 	console:"",
 	init: function() {

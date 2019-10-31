@@ -7,7 +7,7 @@ var commands = ["ls", "cat", "help", "clear"];
 var files = ["welcome.txt", "aboutme.txt", "contactme.txt", "resume.txt"];
 
 // Add header to Typer
-$.get("header.txt", function(data){
+$.get("data/header.txt", function(data){
 	var header = data;
 	Typer.addHeader(header.slice(0, header.length-1));
 	Typer.printHeader();
@@ -18,7 +18,7 @@ $.get("header.txt", function(data){
 
 
 // add initial welcome message
-$.get("welcome.txt", function(data){
+$.get("data/welcome.txt", function(data){
 	var welc = data;
 
 	Typer.addFileText(welc.slice(0, welc.length));
@@ -111,13 +111,13 @@ function enterCommand(command){
 	else {
 		switch(com[0]){
 			case "help":
-				$.get("help.txt", function(data){
+				$.get("data/help.txt", function(data){
 					Typer.addFileText(data);
 					interval();
 				});
 				break;
 			case "ls":
-				$.get("dir.txt", function(data){
+				$.get("data/dir.txt", function(data){
 					Typer.addFileText(data);
 					interval();
 				});
@@ -131,7 +131,8 @@ function enterCommand(command){
 				else {
 					if(files.includes(com[1]))
 					{
-						$.get(com[1], function(data){
+						var file = "data/"+com[1];
+						$.get(file, function(data){
 							Typer.addFileText(data);
 							interval();
 						})

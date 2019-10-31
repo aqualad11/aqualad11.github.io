@@ -1,4 +1,0 @@
-<h2>Contact Me</h2>
-<p><a href="https://www.linkedin.com/in/jonathan-ascencio-3288b8154/">LinkedIn</a></p>
-<p><a href="https://github.com/aqualad11">GitHub</a></p>
-<p><a href="jonathanascencio.ja@gmail.com">jonathanascencio.ja@gmail.com</a></p>
