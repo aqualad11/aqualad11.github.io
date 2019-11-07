@@ -44,5 +44,5 @@
 		<li>Program was written in C++ for Linux.</li>
 	</ul>
 	<br>
-	<h3>If you'd like a more detailed PDF version of my resume click <a href="My_Resume.pdf" download>here</a></h3>
+	<h3>If you'd like a more detailed PDF version of my resume click <a href="data/My_Resume.pdf" download>here</a></h3>
 </div>
